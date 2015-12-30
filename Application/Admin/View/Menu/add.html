@@ -1,0 +1,33 @@
+<form action="{:U('add')}?navTabId={:CONTROLLER_NAME}" class="pageForm" data-toggle="validate">
+<div class="bjui-pageContent">  
+        <div class="pageFormContent" data-layout-h="0">
+          <table class="table table-condensed table-hover" width="100%">
+           <tbody>
+			        <tr>
+                <td><label class='control-label x85'>菜单名称:</label><input type='text' name='name'  data-rule='名称:required' size='20' ></td>
+              </tr>
+              <tr>
+                <td><label class='control-label x85'>所属父级:</label>
+                    <select name='pid'  data-toggle='selectpicker' date-rule="地址:required" id="pppid">
+                      <option value="">请选择</option>
+                      <option value="0">顶级</option>
+                      <foreach name="menuInfo" item="v">
+                        <option value="{$v.id}">{$v.html}{$v.name}</option>
+                      </foreach>
+                    </select>
+                </td>
+              </tr>
+              <tr>
+                <td><label class='control-label x85'>链接地址:</label><input type='text' name='alink' size='20' ></td>
+              </tr>
+           </tbody>
+          </table>
+        </div>  
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-close" data-icon="close">取消</button></li>
+        <li><button type="submit" class="btn-default" data-icon="save">保存</button></li>
+    </ul>
+</div>
+</form>

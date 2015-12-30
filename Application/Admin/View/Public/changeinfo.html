@@ -1,0 +1,47 @@
+
+
+<div class="bjui-pageContent">
+    <form action="__URL__/changeinfo/navTabId/changeinfo" class="pageForm" data-toggle="validate">
+		<input type="hidden" name="id" value="{$Rs.id}">
+        <div class="pageFormContent" data-layout-h="0">
+          <table class="table table-condensed table-hover" width="100%">
+           <tbody>
+            <tr><td>
+                <label for="j_title" class="control-label x85">真实姓名：</label>
+                <input type="text" data-rule="required" size="25" name="truename" id="j_truename" value="{$Rs.truename}" >
+             </td></tr>
+            <tr><td>
+            <label for="j_title" class="control-label x85">性别：</label>
+              <select name="sex"  data-toggle="selectpicker" data-rule="required">
+			    <if condition="$Rs['sex'] EQ 男 "><option value="男" selected>男</option><else/><option value="女" selected>女</option></if>
+                <option value="男">男</option>
+                <option value="女">女</option>
+                 </select>
+             </td></tr>
+            <tr><td>
+                <label for="j_title" class="control-label x85">手机号码：</label>
+                <input type="text" data-rule="required" size="25" name="phone" id="j_phone" value="{$Rs.phone}" >
+            </td></tr>
+            <tr><td>
+                <label for="j_title" class="control-label x85">电子邮箱：</label>
+                <input type="text" data-rule="required" size="25" name="email" id="j_email" value="{$Rs.email}" >
+             </td></tr>
+            <tr><td>
+                <label for="j_title" class="control-label x85">qq：</label>
+                <input type="text" data-rule="required" size="25" name="qq" id="j_qq" value="{$Rs.qq}" >
+            </td></tr>
+            </tbody>
+            </table>
+        </div>
+    </form>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-close" data-icon="close">取消</button></li>
+        <li><button type="submit" class="btn-default" data-icon="save">保存</button></li>
+    </ul>
+</div>
+
+
+			
+			

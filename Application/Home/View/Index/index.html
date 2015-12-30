@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<!-- Set render engine for 360 browser -->
+	<meta name="renderer" content="webkit">
+	<!-- No Baidu Siteapp-->
+	<meta http-equiv="Cache-Control" content="no-siteapp"/>
+	<!-- Add to homescreen for Chrome on Android -->
+	<meta name="mobile-web-app-capable" content="yes">
+	<!-- Add to homescreen for Safari on iOS -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!-- Tile icon for Win8 (144x144 + tile color) -->
+	<meta name="msapplication-TileColor" content="#0e90d2">
+	<title>index</title>
+
+</head>
+<body>
+	<div class="newwraps">
+		<if condition="$adList">
+			<div class="am-slider am-slider-default" data-am-flexslider="{controlNav: false}">
+				<ul class="am-slides">
+					<foreach name="adList" item="v">
+						<li><img src="__ROOT__/Uploads{$v.img}" style="height: 200px" title="{$v.title}" /></li>
+					</foreach>
+				</ul>
+			</div>
+
+		</if>
+
+		<div class="am-container">
+			<div class="am-g">
+				<div class="am-u-sm-12">
+					<if condition="$cateList">
+						<select data-am-selected="{btnWidth: '100%', btnSize: 'lg', btnStyle: 'secondary'}" onchange="toSubmit(this.value)">
+							<option value="all">全部</option>
+							<foreach name="cateList" item="v">
+								<option value="{$v.id}" <if condition="$get['cate'] eq $v['id']">selected</if>>{$v.title}</option>
+							</foreach>
+						</select>
+					</if>
+				</div>
+			</div>
+			<div class="am-g">
+				<ul class="am-u-sm-12 newlistbox">
+					<if condition="$list">
+						<foreach name="list" item="v">
+							<li>
+								<a href="javascript:alertModel('{$v.id}')">
+									{$v.account}<if condition="$v['is_receive'] eq 1"><span class="am-badge am-badge-danger" id="{$v.id}">已领取</span><else /><span class="am-badge am-badge-secondary" id="{$v.id}">领取</span></if>
+								</a>
+							</li>
+						</foreach>
+					</if>
+				</ul>
+			</div>
+
+		</div>
+
+	</div>
+
+	<div data-am-widget="navbar" class="am-navbar am-cf graynavbar" id="">
+		<ul class="am-navbar-nav am-cf am-avg-sm-4">
+		  <li >
+		    <a href="#" class="">
+		          <span class="am-icon-home"></span>
+		        <span class="am-navbar-label">首页</span>
+		    </a>
+		  </li>
+		  <li>
+		    <a href="###" class="">
+		          <span class="am-icon-user"></span>
+		        <span class="am-navbar-label">会员中心</span>
+		    </a>
+		  </li>
+
+
+		</ul>
+	</div>
+<!-- 弹出内容 -->
+	<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+		<div class="am-modal-dialog">
+			<div class="am-modal-hd">提示</div>
+			<div class="am-modal-bd">
+				密码:<span class="am-badge am-badge-secondary" id="pwd">请等待...</span>
+			</div>
+			<div class="am-modal-footer">
+				<span class="am-modal-btn">确定</span>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="__PUBLIC__/assets/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/assets/dist/sea.js"></script>
+	<script>
+		seajs.config({
+			plugins: ['shim'],
+		    alias: {
+		        "jquery": "jquery.min.js"
+		    }
+		});
+		seajs.use("newinit");
+		seajs.use("indexs");
+	</script>
+</body>
+</html>
+<script>
+	function toSubmit(val){
+		if(val){
+			location.href = '{:U("Index/index")}?cate='+val;
+		}
+		return false;
+	}
+
+	function alertModel(id){
+		if(id){
+			$.ajax({
+				url: '{:U("Index/getPassword")}',
+				type: 'post',
+				async: false,
+				dataType: 'json',
+				data: 'id='+id,
+				success: function(data){
+					if(data.status == 1){
+						$('#pwd').text(data.password);
+						$('#'+id).removeClass("am-badge-secondary").addClass("am-badge-danger").html("已领取");
+						$("#my-alert").modal();
+					} else {
+						alert(data.message);
+					}
+				}
+			})
+		}
+	}
+</script>

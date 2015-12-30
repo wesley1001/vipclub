@@ -1,0 +1,54 @@
+<form action="__URL__/add/navTabId/{:CONTROLLER_NAME}" class="pageForm" data-toggle="validate" method="post">
+<div class="bjui-pageContent">
+        <div class="pageFormContent" data-layout-h="0">
+          <table class="table table-condensed table-hover" width="100%">
+           <tbody>
+			      <tr>
+              <td>
+               <label for="j_name" class="control-label x85">上级权限：</label><select name="pid" data-toggle="selectpicker"  data-rule="required">
+               <option  value="0">顶级</option>
+	                <foreach name="allCate" item="v">
+                     <option value="{$v.id}">
+             	          <switch name="v.level">  <case value="0">+</case> <case value="1">+--</case><case value="2">+------</case><default /></switch>
+	                      {$v.title} <if condition="$v.status EQ 1 "><else/><font color=red>[未启用]</font></if>
+	                    </option>
+                  </foreach>
+               </select>
+              </td>
+            </tr>
+            <tr><td>
+                <label for="j_title" class="control-label x85">分类名称：</label>
+                <input type="text" data-rule="required" size="30" name="title" id="j_title" value="" >
+            </td></tr>
+            <tr><td>
+                <label for="j_title" class="control-label x85">标识：</label>
+                <input type="text" size="30" name="remark" id="j_name" value="" >
+            </td></tr>
+			<if condition="$id EQ '' ">
+			<else/>
+            <tr><td>
+                <label for="j_status" class="control-label x85">是否启用：</label>
+               <select name="status"  data-container="body"  id="j_status" data-toggle="selectpicker" data-rule="required">
+			    <if condition="$Rs['status'] EQ 1 "><option value="1" selected>启用</option><else/><option value="0" selected>禁用</option></if>
+                <option value="1">启用</option>
+                <option value="0">禁用</option>
+                 </select>
+             </td></tr>
+			</if>
+              <tr><td>
+                <label for="j_sort" class="control-label x85">排序：</label>
+                <input type="text"  size="5" data-toggle="spinner" data-min="0" data-max="100" data-step="1" data-rule="integer" name="sort" id="j_sort" value="1" >
+            </td></tr>
+            </tbody>
+            </table>
+        </div>
+    
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-close" data-icon="close">取消</button></li>
+        <li><button type="submit" class="btn-default" data-icon="save">保存</button></li>
+    </ul>
+</div>
+</form>	
+			

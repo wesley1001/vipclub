@@ -1,0 +1,79 @@
+.newwraps{
+	max-width: 640px;
+	margin: 0 auto;
+}
+.graynavbar{
+	background: #f7f7f7
+}
+ .newlistbox{
+ 	margin: 1rem auto;
+ 	list-style: none;
+ }
+ .newlistbox li{
+ 	padding: .8rem 1.5rem;
+ 	border-bottom: 1px solid #eee;
+ 	background: #fff;
+ }
+ .newlistbox li a{
+ 	color: #666;
+ 	font-size: 1.4rem;
+ 	position: relative;
+ 	display: block;
+ 	white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+ }
+ .newlistbox li a:hover{
+ 	background: #fff
+ }
+ .newlistbox li a span{
+ 	position: absolute;
+ 	right: 0rem;
+ 	top: 0rem
+ }
+ .newuserlist{
+ 	margin-top:0px ;
+ }
+ .newuserlist li{
+ 	padding: 2rem 1.5rem
+ }
+ .newuserlist li a{
+ 	font-size: 1.6rem
+ }
+ .newuserlist i{
+ 	font-size: 1.6rem;
+ 	margin-right: 1rem;
+ 	color:#7bc1fc;
+ }
+ .usertop{
+ 	width: 100%;
+ 	text-align: center;
+ 	position: relative;
+ 	height: 15rem;
+ 	overflow: hidden;
+
+ }
+ .usertop>img{
+ 	width: 100%;
+ 	position: absolute;
+ 	top: 0;
+ 	left: 0;
+ 	z-index:-1;
+ 	max-height: 15rem;
+ 	-webkit-filter: blur(3rem); /* Chrome, Opera */
+    -moz-filter: blur(3rem);
+    -ms-filter: blur(3rem);    
+    filter: blur(3rem);   
+ }
+ .userbox{
+ 	width: 10rem;
+ 	margin: 0 auto;
+ 	padding-top: 4rem;
+ 	color:#fff;
+ }
+ .userbox img{
+	width: 6rem;
+	height: 6rem;
+	border-radius:50% 
+ }
+ .userbox p{
+ 	margin-top:.5rem
+ }

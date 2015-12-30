@@ -1,0 +1,67 @@
+<div class="bjui-pageContent">
+    <form action="__URL__/add/navTabId/{:CONTROLLER_NAME}" class="pageForm" data-toggle="validate">
+		<input type="hidden" name="id" value="{$id}">
+        <div class="pageFormContent" data-layout-h="0">
+          <table class="table table-condensed table-hover" width="100%">
+           <tbody>
+            <tr>
+              <td>
+               <label for="j_name" class="control-label x85">类型:</label><select name="cate" data-toggle="selectpicker"  data-rule="required">
+               <foreach name="cateList" item="v">
+                 <option value="{$v.id}">{$v.title}</option>
+               </foreach>
+               </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for='title_input' class='control-label x85'>账号:</label><input type='text' id='account' name='account' size='25'  >
+              </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for='title_input' class='control-label x85'>密码:</label><input type='text' id='password' name='password' size='25'  >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for='title_input' class='control-label x85'>排序:</label><input type='text' id='sort' name='sort' size='5' value="1"  >
+                </td>
+            </tr>
+           </tbody>
+          </table>
+        </div>
+    </form>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-close" data-icon="close">取消</button></li>
+        <li><button type="submit" class="btn-default" data-icon="save">保存</button></li>
+    </ul>
+</div>
+<script>
+$(function(){
+  $('.move').live('click',function(){
+    $(this).parent('div').remove();
+  })
+})
+//上传略缩图成功后的回调函数
+function upload_success(file, data){
+  var json = $.parseJSON(data);
+  if(json){
+    $('#thub').val(json.filename);
+    $('#showThub').attr('src', '__ROOT__/Uploads'+json.filename);
+    $('#wei').show();
+  }
+}
+
+//上传新闻图片成功后的回调函数
+function upload_con_success(file, data){
+  var json = $.parseJSON(data);
+  if(json){
+    var srcstr = '<div style="margin:5px 5px; float:left"><img src="__ROOT__/Uploads'+json.filename+'" style="height:100px"><input type="hidden" name="img[]" value="'+json.filename+'" /><span class="btn-default move" style="cursor:point">移除</span></div>';
+    $('#newswei').append(srcstr);
+    $('#newswei').css('display', 'inline-block');
+  }
+}
+</script>

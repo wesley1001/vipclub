@@ -1,0 +1,99 @@
+<div class="bjui-pageContent">
+    <form action="__URL__/edit/navTabId/{:CONTROLLER_NAME}" class="pageForm" data-toggle="validate">
+		<input type="hidden" name="id" value="{$info.id}">
+        <div class="pageFormContent" data-layout-h="0">
+          <table class="table table-condensed table-hover" width="100%">
+           <tbody>
+            <tr>
+              <td>
+               <label for="j_name" class="control-label x85">广告位置:</label><select name="type" data-toggle="selectpicker"  data-rule="required">
+          <option value="1" <if condition="$info['type'] eq 1">selected="selected"</if>>首页宣传</option>
+               </select>
+              </td>
+            </tr>
+            <!-- <tr>
+              <td>
+               <label for="j_name" class="control-label x85">所属地区类别:</label><select name="location" data-toggle="selectpicker"  data-rule="required">
+               <foreach name="newsCateList" item="v">
+                 <option value="{$v.id}" <if condition="$info['location'] eq $v['id']">selected</if>>{$v.title}</option>
+               </foreach>
+               </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for='title_input' class='control-label x85'>对应ID:</label><input type='text' id='corid' name='corid' size='55' value="{$info.corid}"  >
+              </td>
+            </tr> -->
+            <tr>
+              <td>
+                <label for='title_input' class='control-label x85'>广告标题:</label><input type='text' id='title' name='title' data-rule='required;' size='55' value="{$info.title}"  >
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for='title_input' class='control-label x85'>广告图片:</label>
+                  <span id="wei"><img src="__ROOT__/Uploads{$info.img}" id="showThub" style="height:100px"></span>
+                  <div style="display:inline-block; vertical-align:middle;">
+                      <div id="doc_pic_up" data-toggle="upload" data-uploader="{:U('Public/uploadImg')}?type=ad" 
+                          data-file-size-limit="1024000000"
+                          data-file-type-exts="*.jpg;*.png;*.gif;*.mpg"
+                          data-multi="true"
+                          auto = "true"
+                          data-on-upload-success="upload_success"
+                          data-icon="cloud-upload"></div>
+                      <input type="hidden" name="img" value="{$info.img}" id="thub" data-rule="图片:required">
+                  </div>   
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for='title_input' class='control-label x85'>链接:</label>
+                <input type='text' name='link' name='link' size='55' value="{$info.link}"  >
+              </td>
+            </tr>
+            <tr>
+              <td colspan=2>
+                 <label for='beizhu_input' class='control-label x85'>广告内容:</label>
+                 <div style='display: inline-block; vertical-align: middle;'>
+                    <textarea name='content'   data-toggle='kindeditor' data-minheight='150' data-items='fontname, fontsize, |, forecolor, hilitecolor, bold, italic, underline, removeformat, |, justifyleft, justifycenter, justifyright, insertorderedlist, insertunorderedlist, |, emoticons, image, link'>{$info.content}</textarea>
+                  </div>
+              </td>
+            </tr>
+           </tbody>
+          </table>
+        </div>
+    </form>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-close" data-icon="close">取消</button></li>
+        <li><button type="submit" class="btn-default" data-icon="save">保存</button></li>
+    </ul>
+</div>
+<script>
+$(function(){
+  $('.move').live('click',function(){
+    $(this).parent('div').remove();
+  })
+})
+//上传略缩图成功后的回调函数
+function upload_success(file, data){
+  var json = $.parseJSON(data);
+  if(json){
+    $('#thub').val(json.filename);
+    $('#showThub').attr('src', '__ROOT__/Uploads'+json.filename);
+    $('#wei').show();
+  }
+}
+
+//上传新闻图片成功后的回调函数
+function upload_con_success(file, data){
+  var json = $.parseJSON(data);
+  if(json){
+    var srcstr = '<div style="margin:5px 5px; float:left"><img src="__ROOT__/Uploads'+json.filename+'" style="height:100px"><input type="hidden" name="img[]" value="'+json.filename+'" /><span class="btn-default move" style="cursor:point">移除</span></div>';
+    $('#newswei').append(srcstr);
+    $('#newswei').css('display', 'inline-block');
+  }
+}
+</script>
