@@ -12,6 +12,7 @@
 			'Cate' instanceof Admin\Model\CateModel,
 			'Relation' instanceof Think\Model\RelationModel,
 			'Ad' instanceof Admin\Model\AdModel,
+			'Account' instanceof Admin\Model\AccountModel,
 			'Merge' instanceof Think\Model\MergeModel,
 		],
 	];

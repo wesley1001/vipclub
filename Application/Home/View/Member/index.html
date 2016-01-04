@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Set render engine for 360 browser -->
+    <meta name="renderer" content="webkit">
+    <!-- No Baidu Siteapp-->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileColor" content="#0e90d2">
+    <title>会员中心</title>
+
+</head>
+<body>
+<div class="newwraps">
+
+    <header data-am-widget="header" class="am-header am-header-default">
+        <div class="am-header-left am-header-nav">
+            <a href="#left-link" class="">
+                <i class="am-header-icon am-icon-chevron-left"></i>
+            </a>
+        </div>
+
+        <h1 class="am-header-title">
+            <a href="javascript:history.back()" class="">
+                会员中心
+            </a>
+        </h1>
+    </header>
+    <div class="usertop">
+        <img src="http://h.hiphotos.baidu.com/zhidao/pic/item/ca1349540923dd5499b95d0ad509b3de9d82488e.jpg">
+        <div class="userbox">
+            <img src="http://cdnq.duitang.com/uploads/item/201406/10/20140610223110_PdKFu.jpeg">
+            <p>YFFFF</p>
+        </div>
+    </div>
+
+    <div class="am-g">
+        <ul class="am-u-sm-12 newlistbox newuserlist">
+            <li>
+                <a href="#">
+                    <i class="am-icon-send-o"></i>我的账号<span class="am-icon-chevron-right"></span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</div>
+
+<div data-am-widget="navbar" class="am-navbar am-cf graynavbar" id="">
+    <ul class="am-navbar-nav am-cf am-avg-sm-4">
+        <li >
+            <a href="{:U('Index/index')}" class="">
+                <span class="am-icon-home"></span>
+                <span class="am-navbar-label">首页</span>
+            </a>
+        </li>
+        <li>
+            <a href="###" class="">
+                <span class="am-icon-user"></span>
+                <span class="am-navbar-label">会员中心</span>
+            </a>
+        </li>
+
+    </ul>
+</div>
+
+
+<script type="text/javascript" src="__PUBLIC__/assets/dist/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/assets/dist/sea.js"></script>
+<script>
+    seajs.config({
+        plugins: ['shim'],
+        alias: {
+            "jquery": "jquery.min.js"
+        }
+    });
+    seajs.use("newinit");
+
+</script>
+</body>
+</html>
