@@ -21,13 +21,10 @@
           <tr>
             <th width="10" height="30"></th>
             <th>ID</th>
-            <th>手机号码</th>
             <th>昵称</th>
-            <th>邀游币</th>
-            <th>客户端类型</th>
-            <th>用户类型</th>
+            <th>微信唯一ID</th>
             <th>注册时间</th>
-		        <th>操作</th>
+              <th>操作</th>
           </tr>
         </thead>
         <tbody>
@@ -37,13 +34,10 @@
     		    <td></td>
     		    <td>{$v.id}</td>
             <td>{$v.phone}</td>
-            <td>{$v.uname}</td>
-            <td>{$v.money}</td>
-            <td><if condition="$v['sou'] eq 1">android<elseif condition="$v['sou'] eq 2" />ios<elseif condition="$v['sou'] eq 3" />web</if></td>
-            <td><if condition="$v['admin'] eq 1">管理员<elseif condition="$v['admin'] eq 2" />明星用户<else />普通用户</if></td>
+            <td>{$v.openid}</td>
             <td>{$v.regtime|date="Y-m-d H:i:s", ###}</td>
 
-		        <td> <a href="{:U('edit',array('id' => $v['id']))}"   class="btn btn-green btn-sm" data-toggle="dialog" data-width="900" data-height="700" data-id="dialog-mask" data-mask="true" >编辑</a>
+		        <td> <a href="{:U('edit',array('id' => $v['id']))}"   class="btn btn-green btn-sm" data-toggle="dialog" data-width="700" data-height="500" data-id="dialog-mask" data-mask="true" >编辑</a>
            <!--  <a href="{:U('view',array('id' => $v['id']))}"   class="btn btn-green btn-sm" data-toggle="dialog" data-width="900" data-height="700" data-id="dialog-mask" data-mask="true" >查看</a> -->
            <!-- <a href="{:U('tdel',array('id' => $v['id'],'navTabId' => 'Member'))}" class="btn btn-red btn-sm" data-toggle="doajax" data-confirm-msg="确定要删除吗？">删除</a> -->
            </td>

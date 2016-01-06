@@ -6,26 +6,7 @@
            <tbody>
             <tr>
               <td>
-                <label for='title_input' class='control-label x85'>手机号码:</label>{$info.phone}
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for='title_input' class='control-label x85'>昵称:</label>{$info.uname}
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for='title_input' class='control-label x85'>邀游币:</label>{$info.money}
-              </td>
-            </tr>
-            <tr>
-              <td>
-               <label for="j_name" class="control-label x85">用户类型:</label><select name="admin" data-toggle="selectpicker"  data-rule="required">
-                  <option value="1" <if condition="$info['admin'] eq 1">selected</if>>管理员</option>
-                  <option value="2" <if condition="$info['admin'] eq 2">selected</if>>明星用户</option>
-                  <option value="0" <if condition="$info['admin'] eq 0">selected</if>>普通用户</option>
-               </select>
+                <label for='title_input' class='control-label x85'>昵称:</label><input type="text" name="phone" value="{$info.phone}">
               </td>
             </tr>
             <tr>
