@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<!-- Set render engine for 360 browser -->
+	<meta name="renderer" content="webkit">
+	<!-- No Baidu Siteapp-->
+	<meta http-equiv="Cache-Control" content="no-siteapp"/>
+	<!-- Add to homescreen for Chrome on Android -->
+	<meta name="mobile-web-app-capable" content="yes">
+	<!-- Add to homescreen for Safari on iOS -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!-- Tile icon for Win8 (144x144 + tile color) -->
+	<meta name="msapplication-TileColor" content="#0e90d2">
+	<title>我的账号</title>
+	
+</head>
+<body>
+	<div class="newwraps">		
+	
+		<header data-am-widget="header" class="am-header am-header-default">
+		  <div class="am-header-left am-header-nav">
+		      <a href="{:U('Member/index')}" class="">
+		            <i class="am-header-icon am-icon-chevron-left"></i>
+		      </a>
+		  </div>
+
+		  <h1 class="am-header-title">
+		      <a href="#title-link" class="">
+		        我的账号
+		      </a>
+		  </h1>
+		</header>
+		
+		
+		<div class="am-g" style="margin-top: 1rem">
+			<if condition="$list">
+			<section data-am-widget="accordion" class=" am-accordion am-accordion-gapped" data-am-accordion='{  }'>
+				<foreach name="list" item="v">
+					<dl class="am-accordion-item ">
+						<dt class="am-accordion-title">
+							<span class="am-badge am-badge-secondary am-radius">{$v.title}</span>
+							{$v.account}
+						</dt>
+						<dd class="am-accordion-bd am-collapse">
+							<div class="am-accordion-content">
+								密码：<span class="am-badge  am-badge-success am-radius">{$v.password}</span>
+							</div>
+						</dd>
+					</dl>
+				</foreach>
+			</section>
+				</if>
+		</div>
+	</div>
+
+	<div data-am-widget="navbar" class="am-navbar am-cf graynavbar" id="">
+		<ul class="am-navbar-nav am-cf am-avg-sm-4">
+		  <li >
+		    <a href="{:U('Index/index')}" class="">
+		          <span class="am-icon-home"></span>
+		        <span class="am-navbar-label">首页</span>
+		    </a>
+		  </li>
+		  <li>
+		    <a href="#" class="">
+		          <span class="am-icon-user"></span>
+		        <span class="am-navbar-label">会员中心</span>
+		    </a>
+		  </li>
+		 
+		</ul>
+	</div>
+
+	<script type="text/javascript" src="__PUBLIC__/assets/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/assets/dist/sea.js"></script>
+	<script>
+		seajs.config({
+			plugins: ['shim'],
+		    alias: {
+		        "jquery": "jquery.min.js"
+		    }
+		});
+		seajs.use("newinit");
+		
+	</script>
+</body>
+</html>

@@ -39,15 +39,15 @@
     <div class="usertop">
         <img src="http://h.hiphotos.baidu.com/zhidao/pic/item/ca1349540923dd5499b95d0ad509b3de9d82488e.jpg">
         <div class="userbox">
-            <img src="http://cdnq.duitang.com/uploads/item/201406/10/20140610223110_PdKFu.jpeg">
-            <p>YFFFF</p>
+            <img src="__ROOT__/Uploads{$memberInfo.head}">
+            <p>{$memberInfo.phone}</p>
         </div>
     </div>
 
     <div class="am-g">
         <ul class="am-u-sm-12 newlistbox newuserlist">
             <li>
-                <a href="#">
+                <a href="{:U('Member/myAccount')}">
                     <i class="am-icon-send-o"></i>我的账号<span class="am-icon-chevron-right"></span>
                 </a>
             </li>
@@ -65,7 +65,7 @@
             </a>
         </li>
         <li>
-            <a href="###" class="">
+            <a href="#" class="">
                 <span class="am-icon-user"></span>
                 <span class="am-navbar-label">会员中心</span>
             </a>

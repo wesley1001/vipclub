@@ -12,6 +12,19 @@ class MemberController extends CommController {
     }
 
     public function index() {
+        $model = M('Member');
+        $memberInfo = $model->find($this->uid);
+        $this->memberInfo = $memberInfo;
+        $this->display();
+    }
+
+    public function myAccount() {
+        $model = M('Receive r');
+        $map['r.uid'] = $this->uid;
+        $field = "r.id, a.account, a.password, c.title";
+        $list = $model->where($map)->join('left join think_account a on a.id = r.account_id')
+                ->join('left join think_cate c on c.id = a.cate')->field($field)->order('r.id desc')->select();
+        $this->list = $list;
         $this->display();
     }
 }
